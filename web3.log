@@ -1,0 +1,6 @@
+{"level":"INFO","time":"2022-08-28T23:32:47.665+0800","caller":"logger/log.go:41","msg":"init logger success"}
+{"level":"INFO","time":"2022-08-28T23:37:10.654+0800","caller":"logger/log.go:41","msg":"init logger success"}
+{"level":"INFO","time":"2022-08-28T23:40:00.907+0800","caller":"logger/log.go:41","msg":"init logger success"}
+{"level":"INFO","time":"2022-08-28T23:40:21.394+0800","caller":"logger/log.go:41","msg":"init logger success"}
+{"level":"INFO","time":"2022-08-28T23:52:12.386+0800","caller":"logger/log.go:41","msg":"init logger success"}
+{"level":"INFO","time":"2022-08-28T23:52:17.997+0800","caller":"logger/log.go:74","msg":"/web3/utils/getNewWallet/1","status":200,"method":"GET","path":"/web3/utils/getNewWallet/1","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36","errors":"","cost":0.0003459}

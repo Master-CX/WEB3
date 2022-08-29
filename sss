@@ -1,0 +1,28 @@
+today evidence shine ugly ride render fancy erase aisle december fault outer endorse subway charge globe frozen farm river fitness report what devote live
+
+* KEYNAME (local) - addr: g1ttua2ny9ge0y4n8c94e9vwan7ejd4v2rzj3e85
+pub: gpub1pgfj7ard9eg82cjtv4u4xetrwqer2dntxyfzxz3pqgvuxyrtg2vw4hhxkm8xsunhumpkey0kan45zepzwl53vv67kptpj5mhz5f,
+path: <nil>
+
+gnokey query auth/accounts/g1ttua2ny9ge0y4n8c94e9vwan7ejd4v2rzj3e85 --remote test2.gno.land:36657
+
+account_number=$(gnokey query auth/accounts/g1ttua2ny9ge0y4n8c94e9vwan7ejd4v2rzj3e85  --remote test2.gno.land:36657  | grep account_number| sed 's/[^0-9]//g')
+echo $account_number
+
+sequence=$(gnokey query auth/accounts/g1ttua2ny9ge0y4n8c94e9vwan7ejd4v2rzj3e85  --remote test2.gno.land:36657  | grep sequence | sed 's/[^0-9]//g')
+echo $sequence
+
+gnokey maketx call g1ttua2ny9ge0y4n8c94e9vwan7ejd4v2rzj3e85 --pkgpath "gno.land/r/users" --func "Register" --gas-fee 1000000ugnot --gas-wanted 2000000 --send "200000000ugnot" --args "" --args "nanfang" --args "" > unsigned.tx
+
+gnokey sign g1ttua2ny9ge0y4n8c94e9vwan7ejd4v2rzj3e85 --txpath unsigned.tx --chainid test2 --number $account_number --sequence $sequence > signed.tx
+
+gnokey broadcast signed.tx --remote test2.gno.land:36657
+
+BoardID=$(gnokey query "vm/qeval" --data "gno.land/r/boards GetBoardIDFromName(\"<鐗堝悕>\")" --remote test2.gno.land:36657  |grep data | sed 's/[^0-9]//g')
+
+echo $BoardID
+
+gnokey maketx call g1ttua2ny9ge0y4n8c94e9vwan7ejd4v2rzj3e85 --pkgpath "gno.land/r/boards" --func CreateThread --args $BoardID --args "nice" --args#file "/helloworld.md" --gas-fee 1000000ugnot --gas-wanted 2000000 --chainid test2   --broadcast true  --remote test2.gno.land:36657
+
+
+gnokey maketx call g1ttua2ny9ge0y4n8c94e9vwan7ejd4v2rzj3e85 --pkgpath "gno.land/r/boards" --func "CreateReply" --gas-fee 1000000ugnot --gas-wanted 2000000 --send "" --broadcast true --chainid test2 --args "1" --args "4" --args "4" --args "https://blog.csdn.net/inthat/article/details/110634622?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166149746516781790789514%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166149746516781790789514&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-110634622-null-null.142^v42^pc_rank_34,185^v2^control&utm_term=cosmos&spm=1018.2226.3001.4187" --remote test2.gno.land:36657
